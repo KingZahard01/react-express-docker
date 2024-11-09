@@ -1,0 +1,22 @@
+version: '3'
+services:
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - react-express-network
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    networks:
+      - react-express-network
+    depends_on:
+      - server
+
+networks:
+  react-express-network:
+    driver: bridge
+
